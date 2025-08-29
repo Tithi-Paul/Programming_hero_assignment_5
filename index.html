@@ -8,240 +8,241 @@
 </head>
 <body class="font-sans">
 
-  <nav class="flex items-center justify-between bg-white px-6 py-3 shadow-sm">
+  <nav class="flex flex-col sm:flex-row items-center justify-between bg-white px-4 sm:px-6 py-3 shadow-sm gap-3 sm:gap-0">
     <div class="flex items-center space-x-3">
-      <img src="assets/logo.png" alt="Bangladesh National Emblem" class="w-10 h-10">
-      <span class="text-xl font-bold text-green-800">Emergency Service</span>
+      <img src="assets/logo.png" alt="Bangladesh National Emblem" class="w-8 h-8 sm:w-10 sm:h-10">
+      <span class="text-lg sm:text-xl font-bold text-green-800">Emergency Service</span>
     </div>
 
-    <div class="flex items-center space-x-4">
-      <div class="flex items-center bg-green-100 px-4 py-2 rounded-full text-sm border border-green-200">
+    <div class="flex items-center space-x-2 sm:space-x-4">
+      <div class="flex items-center bg-green-100 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm border border-green-200">
         <span id="favCount" class="mr-2 text-green-800 font-medium">0</span>
-        <img src="assets/heart.png" alt="Heart" class="w-5 h-5">
+        <img src="assets/heart.png" alt="Heart" class="w-4 h-4 sm:w-5 sm:h-5">
       </div>
 
-      <div class="flex items-center bg-green-100 px-4 py-2 rounded-full text-sm border border-green-200">
+      <div class="flex items-center bg-green-100 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm border border-green-200">
         <span id="coinCount" class="mr-2 text-green-800 font-medium">100</span>
-        <img src="assets/coin.png" alt="Coin" class="w-5 h-5">
+        <img src="assets/coin.png" alt="Coin" class="w-4 h-4 sm:w-5 sm:h-5">
       </div>
 
       <button
         id="copyBtn"
-        class="bg-green-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition-colors duration-200 shadow-sm"
+        class="bg-green-600 text-white px-3 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold hover:bg-green-700 transition-colors duration-200 shadow-sm"
       >
-        <span id="copyCount">2</span> Copy
+        <span id="copyCount">0</span> Copy
       </button>
     </div>
   </nav>
 
-  <section class="bg-gradient-to-r from-green-900 to-green-700 text-center text-white py-16 relative">
+  <section class="bg-gradient-to-r from-green-900 to-green-700 text-center text-white py-8 sm:py-16 relative">
     <div class="absolute top-0 left-0 right-0 h-1 bg-blue-500"></div>
     
-    <div class="mx-auto w-20 h-20 mb-6 border-2 border-dashed border-blue-400 rounded-lg flex items-center justify-center">
-      <img src="assets/logo.png" alt="Bangladesh National Emblem" class="w-16 h-16">
+    <div class="mx-auto w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6 rounded-lg flex items-center justify-center">
+      <img src="assets/logo.png" alt="Bangladesh National Emblem" class="w-12 h-12 sm:w-16 sm:h-16">
     </div>
 
-    <div class="mx-auto max-w-4xl mb-4 border-2 border-dashed border-blue-400 rounded-lg px-8 py-4">
-      <h1 class="text-3xl font-bold">Emergency Service Directory</h1>
+    <div class="mx-auto max-w-4xl mb-4 rounded-lg px-4">
+      <h1 class="text-2xl sm:text-3xl font-bold">Emergency Service Directory</h1>
     </div>
 
-    <div class="mx-auto max-w-5xl border-2 border-dashed border-blue-400 rounded-lg px-8 py-4">
-      <p class="text-lg">
+    <div class="mx-auto max-w-5xl rounded-lg px-4">
+      <p class="text-base sm:text-lg">
         Government Emergency Services at Your Fingertip – A Project by Government of the People's Republic of Bangladesh
       </p>
     </div>
   </section>
 
-  <section class="bg-green-50 min-h-screen py-8">
-    <div class="container mx-auto px-6">
-      <div class="flex gap-8">
+  <section class="bg-green-50 min-h-screen py-4 sm:py-8">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
         <div class="flex-1">
-          <h2 class="text-2xl font-bold text-green-800 mb-6">Emergency Hotline Section</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/emergency.png" alt="Emergency" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+          <h2 class="text-xl sm:text-2xl font-bold text-green-800 mb-4 sm:mb-6">Emergency Hotline Section</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/emergency.png" alt="Emergency" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
-              <h3 class="text-lg font-semibold text-gray-800 mb-1">National Emergency Number</h3>
-              <p class="text-sm text-gray-600 mb-3">National Emergency</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">999</div>
-              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-4">All</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('999', 'National Emergency Number')">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-1">National Emergency Number</h3>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">National Emergency</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">999</div>
+              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">All</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('999', 'National Emergency Number')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('999', 'National Emergency Number')">
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('999', 'National Emergency Number')">
                   📞 Call
                 </button>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/police.png" alt="Police" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/police.png" alt="Police" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
-              <h3 class="text-lg font-semibold text-gray-800 mb-1">Police Helpline Number</h3>
-              <p class="text-sm text-gray-600 mb-3">Police</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">1994-999999</div>
-              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-4">Police</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('1994-999999', 'Police Helpline Number')">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-1">Police Helpline Number</h3>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Police</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">1994-999999</div>
+              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">Police</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('1994-999999', 'Police Helpline Number')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('1994-999999', 'Police Helpline Number')">
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('1994-999999', 'Police Helpline Number')">
                   📞 Call
                 </button>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/fire-service.png" alt="Fire Service" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/fire-service.png" alt="Fire Service" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
-              <h3 class="text-lg font-semibold text-gray-800 mb-1">Fire Service Number</h3>
-              <p class="text-sm text-gray-600 mb-3">Fire Service</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">109</div>
-              <span class="inline-block bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full mb-4">Fire</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('109', 'Fire Service Number')">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-1">Fire Service Number</h3>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Fire Service</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">109</div>
+              <span class="inline-block bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">Fire</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('109', 'Fire Service Number')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('109', 'Fire Service Number')">
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('109', 'Fire Service Number')">
                   📞 Call
                 </button>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/ambulance.png" alt="Ambulance" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/ambulance.png" alt="Ambulance" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
-              <h3 class="text-lg font-semibold text-gray-800 mb-1">Ambulance Service</h3>
-              <p class="text-sm text-gray-600 mb-3">Ambulance</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">106</div>
-              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mb-4">Health</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('106', 'Ambulance Service')">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-1">Ambulance Service</h3>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Ambulance</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">106</div>
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">Health</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('106', 'Ambulance Service')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('106', 'Ambulance Service')">
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('106', 'Ambulance Service')">
                   📞 Call
                 </button>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/emergency.png" alt="Women & Child" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/emergency.png" alt="Women & Child" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
               <h3 class="text-lg font-semibold text-gray-800 mb-1">Women & Child Helpline</h3>
-              <p class="text-sm text-gray-600 mb-3">Women & Child Helpline</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">16216</div>
-              <span class="inline-block bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mb-4">Help</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('16216', 'Women & Child Helpline')">
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Women & Child Helpline</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">16216</div>
+              <span class="inline-block bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">Help</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('16216', 'Women & Child Helpline')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('16216', 'Women & Child Helpline')">
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('16216', 'Women & Child Helpline')">
                   📞 Call
                 </button>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/emergency.png" alt="Anti-Corruption" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/emergency.png" alt="Anti-Corruption" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
-              <h3 class="text-lg font-semibold text-gray-800 mb-1">Anti-Corruption Helpline</h3>
-              <p class="text-sm text-gray-600 mb-3">Anti-Corruption</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">16445</div>
-              <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full mb-4">Govt.</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('16445', 'Anti-Corruption Helpline')">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-1">Anti-Corruption Helpline</h3>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Anti-Corruption</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">16445</div>
+              <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">Govt.</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('16445', 'Anti-Corruption Helpline')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('16445', 'Anti-Corruption Helpline')">
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('16445', 'Anti-Corruption Helpline')">
+                  📞 Call
+                </button>
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/emergency.png" alt="Electricity" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
+                </button>
+              </div>
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-1">Electricity Helpline</h3>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Electricity Outage</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">163</div>
+              <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">Electricity</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('163', 'Electricity Helpline')">
+                  📋 Copy
+                </button>
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('163', 'Electricity Helpline')">
                   📞 Call
                 </button>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/emergency.png" alt="Electricity" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/brac.png" alt="Brac" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
-              <h3 class="text-lg font-semibold text-gray-800 mb-1">Electricity Helpline</h3>
-              <p class="text-sm text-gray-600 mb-3">Electricity Outage</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">163</div>
-              <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full mb-4">Electricity</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('163', 'Electricity Helpline')">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-1">Brac Helpline</h3>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Brac</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">106</div>
+              <span class="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">NGO</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('106', 'Brac Helpline')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('163', 'Electricity Helpline')">
+                <button class="w-full sm:flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('106', 'Brac Helpline')">
                   📞 Call
                 </button>
               </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/brac.png" alt="Brac" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
-                </button>
-              </div>
-              <h3 class="text-lg font-semibold text-gray-800 mb-1">Brac Helpline</h3>
-              <p class="text-sm text-gray-600 mb-3">Brac</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">106</div>
-              <span class="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full mb-4">NGO</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('106', 'Brac Helpline')">
-                  📋 Copy
-                </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('106', 'Brac Helpline')">
-                  📞 Call
-                </button>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-6 relative">
-              <div class="flex justify-between items-start mb-4">
-                <img src="assets/Bangladesh-Railway.png" alt="Bangladesh Railway" class="w-8 h-8">
-                <button class="text-red-500 hover:text-red-600 transition-colors" onclick="toggleFavorite(this)">
-                  💗
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 relative">
+              <div class="flex justify-between items-start mb-3 sm:mb-4">
+                <img src="assets/Bangladesh-Railway.png" alt="Bangladesh Railway" class="w-6 h-6 sm:w-8 sm:h-8">
+                <button class="heart-btn text-gray-400 hover:text-red-500 transition-colors text-lg sm:text-xl" data-favorited="false" onclick="toggleFavorite(this)">
+                  ♡
                 </button>
               </div>
               <h3 class="text-lg font-semibold text-gray-800 mb-1">Bangladesh Railway Helpline</h3>
-              <p class="text-sm text-gray-600 mb-3">Bangladesh Railway</p>
-              <div class="text-2xl font-bold text-green-600 mb-3">169</div>
-              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-4">Travel</span>
-              <div class="flex gap-2">
-                <button class="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-2" onclick="copyNumber('169', 'Bangladesh Railway Helpline')">
+              <p class="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Bangladesh Railway</p>
+              <div class="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-3">169</div>
+              <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mb-3 sm:mb-4">Travel</span>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <button class="w-full sm:flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-gray-200 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="copyNumber('169', 'Bangladesh Railway Helpline')">
                   📋 Copy
                 </button>
-                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-2" onclick="callNumber('169', 'Bangladesh Railway Helpline')">
+                <button class="flex-1 bg-green-600 text-white px-3 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors flex items-center justify-center gap-1 sm:gap-2" onclick="callNumber('169', 'Bangladesh Railway Helpline')">
                   📞 Call
                 </button>
               </div>
@@ -249,18 +250,18 @@
           </div>
         </div>
 
-        <div class="w-80 bg-white rounded-lg shadow-md p-6 h-fit">
-          <div class="flex justify-between items-center mb-6">
+        <div class="w-full lg:w-80 bg-white rounded-lg shadow-md p-4 sm:p-6 h-fit">
+          <div class="flex justify-between items-center mb-4 sm:mb-6">
             <div class="flex items-center gap-2">
-              <span class="text-xl">🕰️</span>
-              <h3 class="text-lg font-semibold text-gray-800">Call History</h3>
+              <span class="text-lg sm:text-xl">🕰️</span>
+              <h3 class="text-base sm:text-lg font-semibold text-gray-800">Call History</h3>
             </div>
-            <button class="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700 transition-colors" onclick="clearHistory()">
+            <button class="bg-green-600 text-white px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm hover:bg-green-700 transition-colors" onclick="clearHistory()">
               Clear
             </button>
           </div>
           
-          <div id="callHistory" class="space-y-3">
+          <div id="callHistory" class="space-y-2 sm:space-y-3">
           </div>
         </div>
       </div>

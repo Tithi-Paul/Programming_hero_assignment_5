@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyCount = document.getElementById('copyCount');
     const copyBtn = document.getElementById('copyBtn');
 
-    let currentFavCount = parseInt(localStorage.getItem('favCount')) || 0;
+    let currentFavCount = 0;
     let currentCoinCount = parseInt(localStorage.getItem('coinCount')) || 100;
-    let currentCopyCount = parseInt(localStorage.getItem('copyCount')) || 2;
+    let currentCopyCount = parseInt(localStorage.getItem('copyCount')) || 0;
 
     let callHistory = JSON.parse(localStorage.getItem('callHistory')) || [];
     const callHistoryContainer = document.getElementById('callHistory');
@@ -57,19 +57,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.toggleFavorite = function(button) {
-        if (button.textContent === '💗') {
-            button.textContent = '❤️';
+        const isFavorited = button.getAttribute('data-favorited') === 'true';
+        
+        if (!isFavorited) {
+            button.textContent = '♥';
+            button.setAttribute('data-favorited', 'true');
+            button.classList.remove('text-gray-400', 'hover:text-red-500');
+            button.classList.add('text-red-500');
             currentFavCount++;
             button.style.transform = 'scale(1.2)';
             setTimeout(() => {
                 button.style.transform = 'scale(1)';
             }, 200);
         } else {
-            button.textContent = '💗';
+            button.textContent = '♡';
+            button.setAttribute('data-favorited', 'false');
+            button.classList.remove('text-red-500');
+            button.classList.add('text-gray-400', 'hover:text-red-500');
             currentFavCount = Math.max(0, currentFavCount - 1);
         }
         updateDisplay();
-        saveToStorage();
     };
 
     window.copyNumber = function(number, serviceName) {
@@ -117,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function saveToStorage() {
-        localStorage.setItem('favCount', currentFavCount);
         localStorage.setItem('coinCount', currentCoinCount);
         localStorage.setItem('copyCount', currentCopyCount);
     }
@@ -125,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function incrementHeartCount() {
         currentFavCount++;
         updateDisplay();
-        saveToStorage();
         
         favCount.style.transform = 'scale(1.2)';
         setTimeout(() => {
@@ -168,14 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     });
 
-    favCount.parentElement.addEventListener('click', function() {
-        incrementHeartCount();
-    });
-
-    coinCount.parentElement.addEventListener('click', function() {
-        incrementCoinCount(5); 
-    });
-
     updateDisplay();
     updateCallHistoryDisplay();
 
@@ -192,6 +189,113 @@ document.addEventListener('DOMContentLoaded', function() {
         .bg-green-100:hover {
             background-color: rgb(187 247 208);
         }
+
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .grid {
+                gap: 1rem;
+            }
+            
+            .card {
+                padding: 1rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+            
+            .text-xl {
+                font-size: 1.25rem;
+            }
+            
+            .text-lg {
+                font-size: 1.125rem;
+            }
+            
+            .text-sm {
+                font-size: 0.875rem;
+            }
+            
+            .text-xs {
+                font-size: 0.75rem;
+            }
+            
+            .p-6 {
+                padding: 1rem;
+            }
+            
+            .mb-6 {
+                margin-bottom: 1rem;
+            }
+            
+            .gap-8 {
+                gap: 1.5rem;
+            }
+            
+            .w-80 {
+                width: 100%;
+            }
+            
+            .flex-row {
+                flex-direction: column;
+            }
+            
+            .space-x-4 > * + * {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+            
+            .space-y-3 > * + * {
+                margin-top: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lg\\:flex-row {
+                flex-direction: column;
+            }
+            
+            .lg\\:w-80 {
+                width: 100%;
+            }
+            
+            .lg\\:gap-8 {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .lg\\:grid-cols-3 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sm\\:grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+
+        .touch-manipulation {
+            touch-action: manipulation;
+        }
+
+        .select-none {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .tap-highlight-transparent {
+            -webkit-tap-highlight-color: transparent;
+        }
     `;
     document.head.appendChild(style);
+
+    document.body.classList.add('touch-manipulation', 'select-none', 'tap-highlight-transparent');
 }); 
