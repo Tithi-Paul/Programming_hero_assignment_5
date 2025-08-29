@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Service</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+
+  <nav class="flex items-center justify-between bg-white px-6 py-3 shadow-sm">
+    <div class="flex items-center space-x-3">
+      <img src="assets/logo.png" alt="Bangladesh National Emblem" class="w-10 h-10">
+      <span class="text-xl font-bold text-green-800">Emergency Service</span>
+    </div>
+
+
+    <div class="flex items-center space-x-4">
+      <div class="flex items-center bg-green-100 px-4 py-2 rounded-full text-sm border border-green-200">
+        <span id="favCount" class="mr-2 text-green-800 font-medium">0</span>
+        <img src="assets/heart.png" alt="Heart" class="w-5 h-5">
+      </div>
+
+      <div class="flex items-center bg-green-100 px-4 py-2 rounded-full text-sm border border-green-200">
+        <span id="coinCount" class="mr-2 text-green-800 font-medium">100</span>
+        <img src="assets/coin.png" alt="Coin" class="w-5 h-5">
+      </div>
+
+      <button
+        id="copyBtn"
+        class="bg-green-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition-colors duration-200 shadow-sm"
+      >
+        <span id="copyCount">2</span> Copy
+      </button>
+    </div>
+  </nav>
+
+  <section class="bg-gradient-to-r from-green-900 to-green-700 text-center text-white py-16 relative">
+ 
+    <div class="absolute top-0 left-0 right-0 h-1 bg-blue-500"></div>
+    
+
+    <div class="mx-auto w-20 h-20 mb-6 border-2 border-dashed border-blue-400 rounded-lg flex items-center justify-center">
+      <img src="assets/logo.png" alt="Bangladesh National Emblem" class="w-16 h-16">
+    </div>
+
+    <div class="mx-auto max-w-4xl mb-4 border-2 border-dashed border-blue-400 rounded-lg px-8 py-4">
+      <h1 class="text-3xl font-bold">Emergency Service Directory</h1>
+    </div>
+
+
+    <div class="mx-auto max-w-5xl border-2 border-dashed border-blue-400 rounded-lg px-8 py-4">
+      <p class="text-lg">
+        Government Emergency Services at Your Fingertip – A Project by Government of the People's Republic of Bangladesh
+      </p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
