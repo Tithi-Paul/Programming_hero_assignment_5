@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentFavCount = 0;
     let currentCoinCount = 100;
-    let currentCopyCount = parseInt(localStorage.getItem('copyCount')) || 0;
+    let currentCopyCount = 0;
 
     let callHistory = [];
     const callHistoryContainer = document.getElementById('callHistory');
@@ -54,6 +54,26 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCallHistoryDisplay();
     }
 
+    function copyToClipboardFallback(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+            return successful;
+        } catch (err) {
+            document.body.removeChild(textArea);
+            return false;
+        }
+    }
+
     window.toggleFavorite = function(button) {
         const isFavorited = button.getAttribute('data-favorited') === 'true';
         
@@ -77,9 +97,43 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDisplay();
     };
 
-    window.copyNumber = function(number, serviceName) {
-        navigator.clipboard.writeText(number).then(() => {
-            const button = event.target;
+    window.copyNumber = function(number, serviceName, button) {
+        alert(`Copying ${serviceName} number: ${number}`);
+        
+        // Try modern clipboard API first
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(number).then(() => {
+                handleCopySuccess(number, button);
+            }).catch(() => {
+                // Fallback to legacy method
+                handleCopyFallback(number, button);
+            });
+        } else {
+            // Use fallback method directly
+            handleCopyFallback(number, button);
+        }
+    };
+
+    function handleCopySuccess(number, button) {
+        const originalText = button.innerHTML;
+        button.innerHTML = '✅ Copied!';
+        button.classList.add('bg-green-100', 'text-green-800');
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('bg-green-100', 'text-green-800');
+        }, 1500);
+        
+        currentCopyCount++;
+        updateDisplay();
+        
+        console.log(`Successfully copied ${number} using modern API`);
+    }
+
+    function handleCopyFallback(number, button) {
+        const success = copyToClipboardFallback(number);
+        
+        if (success) {
             const originalText = button.innerHTML;
             button.innerHTML = '✅ Copied!';
             button.classList.add('bg-green-100', 'text-green-800');
@@ -91,11 +145,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             currentCopyCount++;
             updateDisplay();
-            saveToStorage();
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
-    };
+            
+            console.log(`Successfully copied ${number} using fallback method`);
+        } else {
+            // If all methods fail, show the number for manual copy
+            alert(`Copy failed. Here's the number to copy manually: ${number}`);
+            console.error('All copy methods failed');
+        }
+    }
 
     window.callNumber = function(number, serviceName) {
         if (currentCoinCount < 20) {
@@ -127,10 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
         clearHistory();
     };
 
-    function saveToStorage() {
-        localStorage.setItem('copyCount', currentCopyCount);
-    }
-
     function incrementHeartCount() {
         currentFavCount++;
         updateDisplay();
@@ -154,26 +207,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function incrementCopyCount() {
         currentCopyCount++;
         updateDisplay();
-        saveToStorage();
         
         copyBtn.style.transform = 'scale(1.05)';
         setTimeout(() => {
             copyBtn.style.transform = 'scale(1)';
         }, 200);
     }
-
-    copyBtn.addEventListener('click', function() {
-        incrementCopyCount();
-        
-        const originalText = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<span>Copied!</span>';
-        copyBtn.classList.add('bg-green-500');
-        
-        setTimeout(() => {
-            copyBtn.innerHTML = originalText;
-            copyBtn.classList.remove('bg-green-500');
-        }, 1000);
-    });
 
     updateDisplay();
     updateCallHistoryDisplay();
