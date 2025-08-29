@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentCoinCount = 100;
     let currentCopyCount = parseInt(localStorage.getItem('copyCount')) || 0;
 
-    let callHistory = JSON.parse(localStorage.getItem('callHistory')) || [];
+    let callHistory = [];
     const callHistoryContainer = document.getElementById('callHistory');
 
     function updateDisplay() {
@@ -46,13 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
             callHistory = callHistory.slice(0, 10);
         }
         
-        localStorage.setItem('callHistory', JSON.stringify(callHistory));
         updateCallHistoryDisplay();
     }
 
     function clearHistory() {
         callHistory = [];
-        localStorage.setItem('callHistory', JSON.stringify(callHistory));
         updateCallHistoryDisplay();
     }
 
