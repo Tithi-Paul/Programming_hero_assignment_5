@@ -1,4 +1,4 @@
-# JavaScript DOM and Event Handling Notes
+# JavaScript DOM and Event Handling QA
 
 ## What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
