@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyBtn = document.getElementById('copyBtn');
 
     let currentFavCount = 0;
-    let currentCoinCount = parseInt(localStorage.getItem('coinCount')) || 100;
+    let currentCoinCount = 100;
     let currentCopyCount = parseInt(localStorage.getItem('copyCount')) || 0;
 
     let callHistory = JSON.parse(localStorage.getItem('callHistory')) || [];
@@ -100,11 +100,17 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     window.callNumber = function(number, serviceName) {
-        addToCallHistory(serviceName, number);
+        if (currentCoinCount < 20) {
+            alert(`Insufficient coins! You need 20 coins to make a call. Current balance: ${currentCoinCount} coins.`);
+            return;
+        }
+
+        alert(`Calling ${serviceName} at ${number}`);
         
         currentCoinCount -= 20;
         updateDisplay();
-        saveToStorage();
+        
+        addToCallHistory(serviceName, number);
         
         const button = event.target;
         const originalText = button.innerHTML;
@@ -124,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function saveToStorage() {
-        localStorage.setItem('coinCount', currentCoinCount);
         localStorage.setItem('copyCount', currentCopyCount);
     }
 
@@ -141,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function incrementCoinCount(amount = 1) {
         currentCoinCount += amount;
         updateDisplay();
-        saveToStorage();
         
         coinCount.style.transform = 'scale(1.2)';
         setTimeout(() => {
